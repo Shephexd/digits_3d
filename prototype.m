@@ -21,8 +21,8 @@ cutidx = round(SAMPLE_N*.7);
 
 traindata = DownSData(:,:,ridx(1:cutidx));
 trainclass = class(ridx(1:cutidx));
-testdata = DownSData(:,:,ridx(1+cutidx:SAMPLE_N));
-testclass = class(ridx(1+cutidx:SAMPLE_N));
+testdata = DownSData(:,:,ridx(1+cutidx));
+testclass = class(ridx(1+cutidx));
 
 k = 3;
 C = knn(trainclass,traindata,testdata,k);
