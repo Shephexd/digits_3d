@@ -1,14 +1,12 @@
-
+k = 1;
 for i = 1:9
 
-    iset = data(class==i);
+    iset = data(class_index==i);
     
     for j =1:length(iset)
-        c = cell2mat(iset(j));
-        [m1 m2 m3] = pca(c(:,1:3));
-        d = m2(1:17,:)*m1
-        
+        c = DownSData(:,:,k);
         figure(1)
+        scatter(d(:,1),d(:,2));
         subplot(3,1,1);
         scatter(c(:,1),c(:,2));
         
@@ -17,18 +15,9 @@ for i = 1:9
 
         subplot(3,1,3);
         scatter(c(:,2),c(:,3));    
-
-        figure(2)
-        subplot(3,1,1);
-        scatter(d(:,1),d(:,2));
-
-        subplot(3,1,2);
-        scatter(d(:,1),d(:,3));
-
-        subplot(3,1,3);
-        scatter(d(:,2),d(:,3));
         
-    pause(0.1);
+        pause(0.1);
+    k = k+1;
     end
     
 end

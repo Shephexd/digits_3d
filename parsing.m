@@ -7,8 +7,8 @@ str_last = '.mat';
 
 idx_list = [84 79 78 73 76 79 84 75 70 76];
 class_idx = 1;
-class = zeros(sum(idx_list),10);
-class_index = zeros(sum(idx_list),1);
+class = zeros(10,sum(idx_list));
+class_index = zeros(1,sum(idx_list));
 
 for k=0:9
     c = strcat(str1,num2str(k));
@@ -25,7 +25,7 @@ for k=0:9
 %        disp(f);
         p = load(f);
         data{class_idx} = p.pos;
-        class(class_idx,k+1) = 1;
+        class(k+1,class_idx) = 1;
         class_index(class_idx) = k;
         
         class_idx = class_idx + 1;
