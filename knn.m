@@ -10,9 +10,9 @@ function C = knn(train_class, train_data, data, k)
     for i = 1 : test_len
         for j = 1 : train_len
             % Euclidean distance
-            dist(j) = sqrt(sum(sum((train_data(:,:, j) - data(:,:, i)).^2)));
+            dist(j) = (sum(sum(abs((train_data(:,:, j) - data(:,:, i))).^1)))^(1);
             % Manhattan distance
-            %dist(idx) = sum(abs(x(idx,:) - newpoint));
+            %dist(idx) = sum(sum(abs(x(idx,:) - newpoint)));
         end
         
         [~, s_idx] = sort(dist);

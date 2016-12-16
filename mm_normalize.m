@@ -1,9 +1,10 @@
 function norm_data = mm_normalize(denorm_data)
     norm_data = zeros(size(denorm_data));
-    for i = 1:size(denorm_data,2)
-        norm_data(:,i) = ((denorm_data(:,i)-min(denorm_data(:,i)))/...
-            (max(denorm_data(:,i))-min(denorm_data(:,i))))*2-1;        %MAX-MIN normalization
+    N = size(denorm_data,3);
+    for i = 1:N
+        for j = 1:3
+        norm_data(:,j,i) = ((denorm_data(:,j,i)-min(denorm_data(:,j,i)))/...
+            (max(denorm_data(:,j,i))-min(denorm_data(:,j,i))));        %MAX-MIN normalization
+        end
     end
 end
-
-

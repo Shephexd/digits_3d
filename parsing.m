@@ -1,4 +1,4 @@
-function [ data,class,class_index ] = parsing()
+function [ data,class ] = parsing()
 %PARSING Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,8 +7,8 @@ str_last = '.mat';
 
 idx_list = [84 79 78 73 76 79 84 75 70 76];
 class_idx = 1;
-class = zeros(10,sum(idx_list));
-class_index = zeros(1,sum(idx_list));
+
+class = zeros(1,sum(idx_list));
 
 for k=0:9
     c = strcat(str1,num2str(k));
@@ -25,8 +25,7 @@ for k=0:9
 %        disp(f);
         p = load(f);
         data{class_idx} = p.pos;
-        class(k+1,class_idx) = 1;
-        class_index(class_idx) = k;
+        class(class_idx) = k;
         
         class_idx = class_idx + 1;
     end
