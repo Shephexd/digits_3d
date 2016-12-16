@@ -11,16 +11,30 @@ for i = 0:9
         k = k + 1;
     end
 end
-ridx = randperm(774,774);
-DownSData(:,:,ridx(1:387));
+SAMPLE_N = size(DownSData,3);
+
+ridx = randperm(SAMPLE_N,SAMPLE_N);
+cutidx = round(SAMPLE_N*.7);
+
+traindata = DownSData(:,:,ridx(1:cutidx));
+trainclass = class_index(ridx(1:cutidx));
+data = DownSData(:,:,ridx(1+cutidx:SAMPLE_N));
+class = class_index(ridx(1+cutidx:SAMPLE_N));
+
+k = 2;
+C = knn(trainclass,traindata,data,k);
+
+plot(C-class,'x');
+disp(sum(C-class==0)/length(C));
+disp(k);
+
+%%
+for i=0:9
+    disp(sum(class(~(C-class==0))==i))
+end
 
 
 %%
-
-
-
-%%
-
 pca_dataset = zeros(10,3,774);
 k = 1;
 for i = 0:9
