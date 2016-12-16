@@ -26,4 +26,4 @@ digit_classify_HM
 
 
 
-It is one practical assignment for Pattern recognition course at LUT.
+It is a practical assignment for Pattern recognition course at LUT.
